@@ -43,5 +43,5 @@ The interface fits laptop and phone browsers, so students can capture notes on t
 MemoryBox is built with Go and PostgreSQL. A Switch agent adapter can connect a shared Mattermost study room, and summaries use an optional AI provider.
 
 12
-00:02:45,000 --> 00:03:00,000
+00:02:45,000 --> 00:02:58,500
 MemoryBox keeps the original source, readable text, and study aid together. Capture once, understand better, and find the right note when it matters.
