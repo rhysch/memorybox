@@ -89,6 +89,9 @@ func checkStudyRelevance(ctx context.Context, text, mimeType string, image []byt
 		if res.StatusCode != http.StatusOK {
 			lastErr = fmt.Errorf("OpenRouter model %s returned HTTP %d", candidate, res.StatusCode)
 			res.Body.Close()
+			if res.StatusCode == http.StatusTooManyRequests {
+				return false, "", "", lastErr
+			}
 			continue
 		}
 		decodeErr := json.NewDecoder(io.LimitReader(res.Body, 1<<20)).Decode(&out)

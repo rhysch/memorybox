@@ -98,6 +98,11 @@ func summarizeOpenRouter(ctx context.Context, text string) (string, error) {
 		if res.StatusCode != http.StatusOK {
 			lastErr = fmt.Errorf("OpenRouter model %s returned HTTP %d", candidate, res.StatusCode)
 			res.Body.Close()
+			// A 429 may be the account-wide free-model limit. Trying more free
+			// model IDs would consume more failed requests without fixing it.
+			if res.StatusCode == http.StatusTooManyRequests {
+				return "", lastErr
+			}
 			continue
 		}
 		err = json.NewDecoder(io.LimitReader(res.Body, 1<<20)).Decode(&out)
@@ -191,7 +196,11 @@ func (a *App) summary(w http.ResponseWriter, r *http.Request) {
 		if _, clearErr := a.DB.Exec(r.Context(), `UPDATE notes SET summary='' WHERE id=$1 AND summary LIKE 'Quick backup summary (AI service temporarily unavailable)%'`, id); clearErr != nil {
 			log.Printf("could not clear obsolete backup summary: %v", clearErr)
 		}
-		http.Error(w, "AI summary is temporarily unavailable. Your note is saved; try again later.", 503)
+		message := "AI summary is temporarily unavailable. Your note is saved; try again later."
+		if strings.Contains(err.Error(), "HTTP 429") {
+			message = "Your note is saved, but OpenRouter rejected the summary request (429: free-model limit or provider capacity). Check your OpenRouter usage. Wait a minute for a short limit, or retry after the daily free quota resets at 00:00 UTC."
+		}
+		http.Error(w, message, 503)
 		return
 	}
 	// Do not attach a summary to text changed while the model was running.
