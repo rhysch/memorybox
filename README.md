@@ -2,6 +2,16 @@
 
 A local student note organizer written in Go, with PostgreSQL persistence.
 
+## Hackathon demo
+
+Watch the [three-minute MemoryBox demo](demo/MemoryBox-Hackathon-Demo.mp4). The
+[narration transcript](demo/Narration.txt) and [captions](demo/Captions.srt) are
+included as well.
+
+MemoryBox helps students keep class notes together, including typed notes and
+text captured from photos or PDFs. It supports search, export, and optional AI
+summaries that explain key ideas in simpler language.
+
 ## Stage 1: database and notes (no AI required)
 
 Requirements: Go 1.22+, Docker with Compose.

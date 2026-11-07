@@ -1,0 +1,25 @@
+MemoryBox hackathon demo narration
+
+01. Welcome to MemoryBox, a student note organizer. Students create useful notes every day, but those notes often end up scattered, hard to search, and difficult to revisit before exams.
+
+02. A notebook, a phone gallery, chat messages, and a folder full of PDFs split the study workflow. MemoryBox brings these materials into one clear study space.
+
+03. Students can type notes, capture a page with a phone, or upload an image or PDF. The original attachment stays safely beside its saved note.
+
+04. For this biology example, I enter a clear title and subject, then add the note. MemoryBox extracts text, and the student can review it before saving.
+
+05. For handwritten pages, MemoryBox tries to transcribe the image and checks that it contains study material. Students can correct the words; unrelated photos are rejected.
+
+06. The saved note keeps the original image beside readable text. Expand a card to inspect every line; collapse it when you want the notebook to stay tidy.
+
+07. The explanation turns readable notes into a study aid: a simple overview, key points, why the idea matters, and a quick question to practice recall.
+
+08. Search scans titles, subjects, and saved text. A student can find a term such as mitochondria directly, instead of reopening every photo and scrolling through files.
+
+09. Mistakes are easy to fix: delete a wrong upload. For offline study, export the notebook as Markdown or JSON, or print the notes to a PDF.
+
+10. The interface fits laptop and phone browsers, so students can capture notes on the go, then revisit and read them later on another screen.
+
+11. MemoryBox is built with Go and PostgreSQL. A Switch agent adapter can connect a shared Mattermost study room, and summaries use an optional AI provider.
+
+12. MemoryBox keeps the original source, readable text, and study aid together. Capture once, understand better, and find the right note when it matters.
