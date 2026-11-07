@@ -1,0 +1,13 @@
+{
+  "name": "memorybox",
+  "display_name": "MemoryBox",
+  "description": "Go student note organizer: save, search, summarize and export a shared study notebook.",
+  "connector_type": "memorybox-go",
+  "integration_profile": {
+    "connection_model": "always_on",
+    "message_exchange": true,
+    "pre_invocation_mediation": [],
+    "post_invocation_mediation": [],
+    "event_reporting": []
+  }
+}

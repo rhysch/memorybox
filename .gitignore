@@ -1,0 +1,7 @@
+.env
+integrations/.env
+memorybox
+memorybox.new
+*.pem
+*.key
+*.log
