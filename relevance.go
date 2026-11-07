@@ -20,7 +20,7 @@ func checkStudyRelevance(ctx context.Context, text, mimeType string, image []byt
 	if mimeType == "application/pdf" && isResumeOrCV(text) {
 		return false, "This PDF looks like a CV or resume, not study notes. Upload class notes, a textbook page, or a worksheet instead.", "", nil
 	}
-	if mimeType == "application/pdf" && hasTechnicalStudySignals(text) {
+	if mimeType == "application/pdf" && hasStudyTextSignals(text) {
 		return true, "", "", nil
 	}
 	key := os.Getenv("OPENROUTER_API_KEY")
@@ -178,7 +178,7 @@ func hasStudyTextSignals(text string) bool {
 			matches++
 		}
 	}
-	return matches >= 2 && len(strings.Fields(lower)) >= 6
+	return matches >= 1 && len(strings.Fields(lower)) >= 8
 }
 
 func isResumeOrCV(text string) bool {
